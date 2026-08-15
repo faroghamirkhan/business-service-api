@@ -8,6 +8,7 @@ use App\Models\Customer;
 use App\Traits\ApiResponse;
 use Illuminate\Http\JsonResponse;
 use App\Http\Resources\Api\V1\CustomerResource;
+use App\Http\Requests\Api\V1\Customer\UpdateCustomerRequest;
 
 class CustomerController extends Controller
 {
@@ -44,6 +45,19 @@ class CustomerController extends Controller
         return $this->success(
             new CustomerResource($customer),
             'Customer retrieved successfully.'
+        );
+    }
+
+    /**
+     * Update the specified customer.
+     */
+    public function update(UpdateCustomerRequest $request, Customer $customer): JsonResponse
+    {
+        $customer->update($request->validated());
+
+        return $this->success(
+            new CustomerResource($customer->fresh()),
+            'Customer updated successfully.'
         );
     }
 }

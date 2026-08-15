@@ -18,6 +18,7 @@ Route::prefix('v1')->group(function () {
         Route::post('/customers', [CustomerController::class, 'store']);
         Route::get('/customers', [CustomerController::class, 'index']);
         Route::get('/customers/{customer}', [CustomerController::class, 'show']);
+        Route::put('/customers/{customer}', [CustomerController::class, 'update']);
     });
     
 });
