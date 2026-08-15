@@ -61,4 +61,14 @@ class AuthController extends Controller
     {
         return $this->success($request->user(), 'User retrieved successfully.');
     }
+
+    /**
+     * Revoke the current access token and log the user out.
+     */
+    public function logout(Request $request): JsonResponse
+    {
+        $request->user()->currentAccessToken()->delete();
+
+        return $this->success(null, 'Logout successful.');
+    }
 }
