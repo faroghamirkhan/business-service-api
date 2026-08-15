@@ -60,4 +60,17 @@ class CustomerController extends Controller
             'Customer updated successfully.'
         );
     }
+
+    /**
+     * Remove the specified customer.
+     */     
+    public function destroy(Customer $customer): JsonResponse
+    {
+        $customer->delete();
+
+        return $this->success(
+            null,
+            'Customer deleted successfully.'
+        );
+    }
 }
