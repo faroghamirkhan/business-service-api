@@ -35,4 +35,15 @@ class CustomerController extends Controller
             201
         );
     }
+
+    /**
+     * Display the specified customer.
+     */
+    public function show(Customer $customer): JsonResponse
+    {
+        return $this->success(
+            new CustomerResource($customer),
+            'Customer retrieved successfully.'
+        );
+    }
 }
