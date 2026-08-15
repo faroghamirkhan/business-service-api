@@ -9,4 +9,6 @@ Route::prefix('v1')->group(function () {
     Route::get('/health', [HealthController::class, 'index']);
 
     Route::post('/auth/register', [AuthController::class, 'register']);
+
+    Route::post('/auth/login', [AuthController::class, 'login']);
 });
