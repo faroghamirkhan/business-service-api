@@ -8,6 +8,7 @@ use App\Http\Requests\Api\V1\Auth\RegisterRequest;
 use App\Models\User;
 use App\Traits\ApiResponse;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -51,5 +52,13 @@ class AuthController extends Controller
             'user' => $user,
             'token' => $token,
         ], 'Login successful.');
+    }
+
+    /**
+     * Return the currently authenticated user.
+     */
+    public function me(Request $request): JsonResponse
+    {
+        return $this->success($request->user(), 'User retrieved successfully.');
     }
 }
